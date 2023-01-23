@@ -2,9 +2,6 @@
 
 module Sandbox where
 
-data Name = Name String String
-
-
 data Maybe' a = Nothing' | Just' a
   deriving Show
 
@@ -16,17 +13,11 @@ instance Functor Maybe' where
   fmap _   Nothing' = Nothing'
   fmap ab (Just' a) = Just' (ab a)
 
--- fmap _ []     = []
--- fmap f (x:xs) = f x : fmap f xs
-
 instance Applicative Maybe' where
   pure :: a -> Maybe' a
   pure a = Just' a
 
   (<*>) :: Maybe' (a -> b) -> Maybe' a -> Maybe' b
-  -- (+) <$> Nothing <*> Just 2
-  -- (+) :: Num a => a -> (a -> a)
-  -- (+) <$> Nothing :: Maybe (a -> a) == Nothing
   Nothing' <*> _   = Nothing'
   Just' ab <*> ma  = fmap ab ma
 
