@@ -4,6 +4,8 @@ This repository contains a preconfigured Haskell development environment, allowi
 
 The environment contains a guided Hangman project, designed as a companion to the second part of EMURGO Academy's Haskell course.
 
+[Launch in Gitpod](https://gitpod.io/#https://github.com/ian-emurgo/HaskellHangman)
+
 ## Create Your Environment
 
 1. Fork this repository
