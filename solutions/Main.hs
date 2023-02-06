@@ -4,6 +4,7 @@ import System.IO
 
 import A8
 import Provided
+import Trans
 
 main :: IO ()
 main = do
@@ -12,4 +13,4 @@ main = do
   hSetBuffering stdin  NoBuffering
   putStrLn _LOGO_
 
-  runApp
+  runAppT
