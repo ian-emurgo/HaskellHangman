@@ -29,6 +29,11 @@ instance Applicative Maybe' where
   -- _ <*> Nothing'      = Nothing'
   -- Just' f <*> Just' x = Just' $ f x
 
+instance Monad Maybe' where
+  (>>=) :: Maybe' a -> (a -> Maybe' b) -> Maybe' b
+  Nothing' >>= _   = Nothing'
+  Just' a  >>= aMb = aMb a
+
 instance Functor (Either' e) where
   fmap :: (a -> b) -> Either' e a -> Either' e b
   fmap _  (Left'  e) = Left' e
@@ -41,6 +46,20 @@ instance Applicative (Either' e) where
   (<*>) :: Either' e (a -> b) -> Either' e a -> Either' e b
   Left' err <*> _  = Left' err
   Right' f  <*> ex = f <$> ex
+
+
+
+
+instance Monad (Either' e) where
+  (>>=) :: Either' e a -> (a -> Either' e b) -> Either' e b
+  Left'  e >>= _   = Left' e
+  Right' a >>= aEb = aEb a
+
+
+
+
+
+
 
 instance Functor (Pair a) where
   fmap :: (b -> c) -> Pair a b -> Pair a c
